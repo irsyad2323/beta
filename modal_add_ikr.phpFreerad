@@ -1,0 +1,71 @@
+	
+
+<div class="modal fade" id="modaltambahdata"  role="dialog" tabindex="-1" aria-labelledby="exampleModalLongTitle" aria-text="true">
+
+        <div class="modal-dialog" role="document">
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <h4 class="modal-user">Tambah Data</h4>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                    <span aria-text="true">&times;</span></button>
+
+                    
+
+                </div>
+
+                 <div class="modal-body">
+                    <form role="form" method="post" id="formdatapengguna">
+							<div class="form-row">
+								<label for="rang">ID User</label>
+								<input class="form-control" type="text" id="username_fal" name="username_fal" autocomplete="off"  readonly>
+							</div>
+						<br/>
+							
+							
+                            <div class="form-row">
+                                <label for="fname">Nama</label>
+                                <input class="form-control" type="text" id="nama_fal" name="nama_fal" placeholder="nama..." readonly>
+                            </div>
+						<br/>				
+                                                 
+                            <div class="form-row">
+								<label for="lname">Alamat</label>
+								<input class="form-control" type="text" id="alamat_fal" name="alamat_fal" placeholder="alamat..." autocomplete="off" readonly>
+							</div>			
+                                                 
+                            <div class="form-row">
+								<label for="lname">Paket</label>
+								<input class="form-control" type="text" id="paket" name="paket" placeholder="alamat..." autocomplete="off" readonly>
+							</div>
+							
+							<div class="form-row">
+							<label for="lname">Date</label>
+								<input type="datetime-local" name="date_wo_post" id="date_wo_post" class="form-control" ="true" readonly>
+							</div>
+							<div class="form-row">
+								<input type="hidden" name="date_end" id="date_end" class="form-control" ="true" readonly>
+							</div>
+							
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-success  pull-right action_post_kap">Insert</button>
+                             </div>
+                        </form>
+
+						
+					
+					<!-- END ISIAN DATA ADMIN -->
+						
+					
+                      </div>
+					  
+            </div>
+
+        </div>
+
+    </div>

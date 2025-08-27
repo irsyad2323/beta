@@ -1,0 +1,45 @@
+POST:
+Array
+(
+    [data_json] => [
+  {
+    "id": "1000009693",
+    "jenis_wo": "MAINTENANCE",
+    "pic_ikr": "gibran",
+    "tgl_ins_datetime": "2025-06-30 10:59:19",
+    "kd_layanan": "pas"
+  },
+  {
+    "id": "1000009692",
+    "jenis_wo": "MAINTENANCE",
+    "pic_ikr": "gibran",
+    "tgl_ins_datetime": "2025-06-30 10:57:45",
+    "kd_layanan": "pas"
+  }
+]
+    [data] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 1000009693
+                    [jenis_wo] => MAINTENANCE
+                    [pic_ikr] => gibran
+                    [tgl_ins_datetime] => 2025-06-30 10:59:19
+                    [kd_layanan] => pas
+                )
+
+            [1] => Array
+                (
+                    [id] => 1000009692
+                    [jenis_wo] => MAINTENANCE
+                    [pic_ikr] => gibran
+                    [tgl_ins_datetime] => 2025-06-30 10:57:45
+                    [kd_layanan] => pas
+                )
+
+        )
+
+    [nominal_konsumsi] => 10000
+    [nominal_bbm] => 15000
+    [detail_pekerjaan] => Maintenance Modem dan setting IP Address Printer di Jasa Marga
+)

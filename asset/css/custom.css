@@ -1,0 +1,271 @@
+ #map {
+        height: 500px;
+        width: 100%;
+        position: relative;
+    }
+
+    /* General styles for custom map control buttons */
+    .custom-map-control-button {
+        background-color: #fff;
+        border: 2px solid #fff;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px rgba(0,0,0,.3);
+        margin: 10px;
+        padding: 8px 16px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #5f6368;
+        text-align: center;
+        outline: none;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .custom-map-control-button:hover {
+        background-color: #4285f4;
+        color: #fff;
+    }
+
+    /* Responsive styles for tablets and smaller devices */
+    @media (max-width: 768px) {
+        #map {
+            height: 300px;
+        }
+
+        .custom-map-control-button {
+            font-size: 12px;
+            padding: 6px 12px;
+            margin: 5px;
+        }
+    }
+
+    /* Responsive styles for mobile phones */
+    @media (max-width: 480px) {
+        #map {
+            height: 250px;
+        }
+
+        .custom-map-control-button {
+            font-size: 12px;
+            padding: 4px 8px;
+            margin: 3px;
+        }
+    }
+	
+	/* Pastikan dropdown autocomplete Google berada di atas elemen lainnya */
+	.pac-container {
+		z-index: 1055 !important; /* Pastikan ini lebih tinggi dari elemen modal dan lainnya */
+		position: absolute !important; /* Pastikan dropdown tetap di lokasi yang benar */
+	}
+
+	/* Tambahkan padding dan font style jika diperlukan */
+	.pac-item {
+		padding: 10px;
+		font-size: 14px;
+	}
+	
+	.modal {
+    z-index: 1050;
+}
+
+.modal-backdrop {
+    z-index: 1049;
+}
+
+.select2-container .select2-selection--single {
+    height: 38px !important; /* Samakan tinggi dengan input form-control */
+    padding: 0.375rem 0.75rem !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 0.25rem !important;
+}
+
+.select2-selection__arrow {
+    height: 100%;
+}
+
+body {
+            font-family: Arial, sans-serif;
+        }
+        .preloader-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .preloader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #ccc;
+            border-top: 5px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+.baris {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .waktu {
+            width: 150px;
+            text-align: right;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .kotak-container {
+            flex-grow: 1;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .kotak {
+            width: 55px;
+            height: 55px;
+            display: inline-block;
+            margin: 2px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-radius: 5px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+        .kotak i {
+            font-size: 24px; /* Ukuran icon */
+        }
+        .kotak:hover {
+            transform: translateY(-5px);
+        }
+        .hijau { background-color: #4CAF50; }
+        .kuning { background-color: #FFEB3B; }
+        .merah { background-color: #F44336; }
+        .abu { background-color: #9E9E9E; }
+        .biru { background-color: #3e2ef9; }
+        .hijaumuda { background-color: #00ff94; }
+        .inactive {
+            cursor: default;
+            opacity: 0.5;
+        }
+
+        #overlay, #popup {
+            display: none;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            top: 0;
+            left: 0;
+            z-index: 999;
+        }
+        #popup {
+            width: 300px;
+            height: auto;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+		
+		 body {
+            background: #ececec;
+        }
+        .lds-dual-ring.hidden { 
+            display: none;
+        }
+        .lds-dual-ring {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+        }
+        .lds-dual-ring:after {
+            content: " ";
+            display: block;
+            width: 64px;
+            height: 64px;
+            margin: 5% auto;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            border-color: #fff transparent #fff transparent;
+            animation: lds-dual-ring 1.2s linear infinite;
+        }
+        @keyframes lds-dual-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0,0,0,.8);
+            z-index: 999;
+            opacity: 1;
+            transition: all 0.5s;
+        }
+
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 8px; /* Rounded corners for the tab container */
+            margin-bottom: 20px; /* Space below the tab container */
+            padding: 5px; /* Optional: Space inside the tab container */
+        }
+
+        /* Style the buttons inside the tab */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 10px 12px;
+            transition: 0.3s;
+            font-size: 17px;
+            color: white; /* White text color */
+            background-color: #8a8c90;
+            border-radius: 8px; /* Rounded corners for the buttons */
+            margin-right: 5px; /* Space between buttons */
+        }
+
+        /* Change background color of buttons on hover */
+        .tab button:hover {
+            background-color: #0061f2;
+        }
+
+        /* Create an active/current tablink class */
+        .tab button.active {
+            background-color:  #0061f2;
+        }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px; /* Rounded corners for the tab content */
+            background-color: #ffffff; /* Set background color for content */
+            color: #333; /* Set text color for content */
+            margin-top: 20px; /* Space above the tab content */
+        }
