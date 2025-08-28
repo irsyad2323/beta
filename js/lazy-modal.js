@@ -1,58 +1,75 @@
-// Lazy modal untuk modal selain datatable
-const modalFiles = {
-    'modal_slot': 'modal_slot.php',
-    'modal_add_ikr': 'modal_add_ikr.php',
-    'modal_add_mntn': 'modal_add_mntn.php',
-    'modal_add_mntnodp': 'modal_add_mntnodp.php',
-    'modal_add_dis': 'modal_add_dis.php',
-    'modal_add_cor': 'modal_add_cor.php',
-    'modal_solved_ikr': 'modal_solved_ikr.php',
-    'modal_solved': 'modal_solved.php',
-    'modalmntn': 'modal_solved_mntn.php',
-    'modal_solved_ins_odp': 'modal_solved_ins_odp.php',
-    'modal_solved_ins_distribusi': 'modal_solved_ins_distribusi.php',
-    'modal_solved_ins_backbone': 'modal_solved_ins_backbone.php',
-    'modal_form_list': 'modal_form_list.php',
-    'modal_slot_jdwl': 'modal_slot_jdwl.php'
+// Lazy Modal Loading - Load modals only when needed
+const modalMap = {
+    'modal_sign1': 'modal_datatable_sign.php',
+    'modal_sign2': 'modal_datatable_sign.php',
+    'modal_sign3': 'modal_datatable_sign.php',
+    'modal_sign4': 'modal_datatable_sign.php',
+    'modal_sign5': 'modal_datatable_sign.php',
+    'modal_sign6': 'modal_datatable_sign.php',
+    'modal_signp1': 'modal_datatable_sign_pas.php',
+    'modal_signp2': 'modal_datatable_sign_pas.php',
+    'modal_signp3': 'modal_datatable_sign_pas.php',
+    'modal_signp4': 'modal_datatable_sign_pas.php',
+    'modal_signp5': 'modal_datatable_sign_pas.php',
+    'modal_signp6': 'modal_datatable_sign_pas.php',
+    'modal_pros1': 'modal_datatable_proses.php',
+    'modal_pros2': 'modal_datatable_proses.php',
+    'modal_pros3': 'modal_datatable_proses.php',
+    'modal_pros4': 'modal_datatable_proses.php',
+    'modal_pros5': 'modal_datatable_proses.php',
+    'modal_pros6': 'modal_datatable_proses.php',
+    'modal_prosp1': 'modal_datatable_proses_pas.php',
+    'modal_prosp2': 'modal_datatable_proses_pas.php',
+    'modal_prosp3': 'modal_datatable_proses_pas.php',
+    'modal_prosp4': 'modal_datatable_proses_pas.php',
+    'modal_prosp5': 'modal_datatable_proses_pas.php',
+    'modal_prosp6': 'modal_datatable_proses_pas.php',
+    'modal_solv1': 'modal_datatable_solved.php',
+    'modal_solv2': 'modal_datatable_solved.php',
+    'modal_solv3': 'modal_datatable_solved.php',
+    'modal_solv4': 'modal_datatable_solved.php',
+    'modal_solv5': 'modal_datatable_solved.php',
+    'modal_solv6': 'modal_datatable_solved.php',
+    'modal_slot': 'modal_slot.php'
 };
 
 const loadedModals = new Set();
 
 function loadModal(modalId) {
-    const file = modalFiles[modalId];
-    if (file && !loadedModals.has(modalId)) {
-        fetch(file)
-            .then(response => response.text())
-            .then(html => {
-                document.getElementById('modal-container').innerHTML += html;
-                loadedModals.add(modalId);
-                
-                // Initialize select2 if available
-                setTimeout(() => {
-                    const modal = document.getElementById(modalId);
-                    if (modal && typeof $.fn.select2 !== 'undefined') {
-                        $(modal).find('.select2').select2();
-                    }
-                }, 100);
-            })
-            .catch(error => console.error('Error loading modal:', error));
+    if (loadedModals.has(modalId)) {
+        return Promise.resolve();
     }
+    
+    const phpFile = modalMap[modalId];
+    if (!phpFile) {
+        return Promise.resolve();
+    }
+    
+    return fetch(phpFile)
+        .then(response => response.text())
+        .then(html => {
+            // Append modal to body if not exists
+            if (!document.getElementById(modalId)) {
+                document.body.insertAdjacentHTML('beforeend', html);
+            }
+            loadedModals.add(modalId);
+        })
+        .catch(error => {
+            console.error('Error loading modal:', error);
+        });
 }
 
-// Override Bootstrap modal show
-$(document).ready(function() {
-    const originalModal = $.fn.modal;
-    $.fn.modal = function(action) {
-        if (action === 'show') {
-            const modalId = this.attr('id');
-            if (modalFiles[modalId]) {
-                loadModal(modalId);
-                setTimeout(() => {
-                    originalModal.call(this, action);
-                }, 150);
-                return this;
-            }
+// Override modal show to load content first
+const originalModal = $.fn.modal;
+$.fn.modal = function(action) {
+    if (action === 'show') {
+        const modalId = this.attr('id');
+        if (modalMap[modalId]) {
+            loadModal(modalId).then(() => {
+                originalModal.call(this, action);
+            });
+            return this;
         }
-        return originalModal.call(this, action);
-    };
-});
+    }
+    return originalModal.call(this, action);
+};

@@ -1,69 +1,68 @@
-// Hybrid lazy modal - cepat + button berfungsi
-$(document).ready(function() {
-    const modals = [
-        'modal_datatable_sign.php',
-        'modal_datatable_sign_pas.php',
-        'modal_datatable_proses.php', 
-        'modal_datatable_proses_pas.php',
-        'modal_datatable_solved.php',
-        'modal_slot.php',
-        'modal_add_ikr.php',
-        'modal_add_mntn.php',
-        'modal_add_mntnodp.php',
-        'modal_add_dis.php',
-        'modal_add_cor.php',
-        'modal_solved_ikr.php',
-        'modal_solved.php',
-        'modal_solved_mntn.php',
-        'modal_solved_ins_odp.php',
-        'modal_solved_ins_distribusi.php',
-        'modal_solved_ins_backbone.php',
-        'modal_form_list.php',
-        'modal_slot_jdwl.php'
-    ];
+// Hybrid Lazy Modal Loading - Load specific modals only when needed
+const modalMap = {
+    'modal_sign1': 'modal_datatable_sign.php',
+    'modal_sign2': 'modal_datatable_sign.php',
+    'modal_sign3': 'modal_datatable_sign.php',
+    'modal_sign4': 'modal_datatable_sign.php',
+    'modal_sign5': 'modal_datatable_sign.php',
+    'modal_sign6': 'modal_datatable_sign.php',
+    'modal_signp1': 'modal_datatable_sign_pas.php',
+    'modal_signp2': 'modal_datatable_sign_pas.php',
+    'modal_signp3': 'modal_datatable_sign_pas.php',
+    'modal_signp4': 'modal_datatable_sign_pas.php',
+    'modal_signp5': 'modal_datatable_sign_pas.php',
+    'modal_signp6': 'modal_datatable_sign_pas.php',
+    'modal_pros1': 'modal_datatable_proses.php',
+    'modal_pros2': 'modal_datatable_proses.php',
+    'modal_pros3': 'modal_datatable_proses.php',
+    'modal_pros4': 'modal_datatable_proses.php',
+    'modal_pros5': 'modal_datatable_proses.php',
+    'modal_pros6': 'modal_datatable_proses.php',
+    'modal_prosp1': 'modal_datatable_proses_pas.php',
+    'modal_prosp2': 'modal_datatable_proses_pas.php',
+    'modal_prosp3': 'modal_datatable_proses_pas.php',
+    'modal_prosp4': 'modal_datatable_proses_pas.php',
+    'modal_prosp5': 'modal_datatable_proses_pas.php',
+    'modal_prosp6': 'modal_datatable_proses_pas.php',
+    'modal_solv1': 'modal_datatable_solved.php',
+    'modal_solv2': 'modal_datatable_solved.php',
+    'modal_solv3': 'modal_datatable_solved.php',
+    'modal_solv4': 'modal_datatable_solved.php',
+    'modal_solv5': 'modal_datatable_solved.php',
+    'modal_solv6': 'modal_datatable_solved.php',
+    'modal_slot': 'modal_slot.php'
+};
+
+const loadedModals = new Set();
+
+function loadModal(modalId) {
+    if (loadedModals.has(modalId)) {
+        return Promise.resolve();
+    }
     
-    // Load modals setelah halaman siap
-    setTimeout(() => {
-        Promise.all(modals.map(file => fetch(file).then(r => r.text())))
-            .then(htmlArray => {
-                $('#modal-container').html(htmlArray.join(''));
-            });
-    }, 100);
+    const phpFile = modalMap[modalId];
+    if (!phpFile) {
+        return Promise.resolve();
+    }
     
-    // Fix untuk modal nested - override Bootstrap modal
-    let modalStack = [];
-    
-    $(document).on('show.bs.modal', '.modal', function() {
-        const modal = $(this);
-        const modalId = modal.attr('id');
-        
-        // Tambah ke stack
-        modalStack.push(modalId);
-        
-        // Set z-index berdasarkan posisi di stack
-        const zIndex = 1050 + (modalStack.length * 10);
-        modal.css('z-index', zIndex);
-        
-        // Fix backdrop z-index
-        setTimeout(() => {
-            $('.modal-backdrop:last').css('z-index', zIndex - 1);
-        }, 0);
-    });
-    
-    $(document).on('hidden.bs.modal', '.modal', function() {
-        const modalId = $(this).attr('id');
-        
-        // Hapus dari stack
-        const index = modalStack.indexOf(modalId);
-        if (index > -1) {
-            modalStack.splice(index, 1);
-        }
-        
-        // Jaga body modal-open jika masih ada modal
-        if (modalStack.length > 0) {
-            setTimeout(() => {
-                $('body').addClass('modal-open');
-            }, 0);
-        }
-    });
+    return fetch(phpFile)
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('modal-container').insertAdjacentHTML('beforeend', html);
+            loadedModals.add(modalId);
+        })
+        .catch(error => {
+            console.error('Error loading modal:', error);
+        });
+}
+
+// Hybrid approach - only intercept specific modals
+$(document).on('show.bs.modal', function(e) {
+    const modalId = e.target.id;
+    if (modalMap[modalId] && !loadedModals.has(modalId)) {
+        e.preventDefault();
+        loadModal(modalId).then(() => {
+            $('#' + modalId).modal('show');
+        });
+    }
 });

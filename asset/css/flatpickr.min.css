@@ -1,0 +1,4 @@
+/* Flatpickr CSS - Minimal */
+.flatpickr-calendar{background:#fff;border:1px solid #e6e6e6;border-radius:5px;box-shadow:0 3px 13px rgba(0,0,0,.08);display:none;font-size:14px;line-height:24px;max-height:640px;opacity:0;overflow:hidden;padding:0;pointer-events:none;position:absolute;text-align:center;visibility:hidden;width:307.875px}
+.flatpickr-calendar.open{display:inline-block;opacity:1;pointer-events:auto;visibility:visible}
+.flatpickr-input{background:#fff;border:1px solid #ddd;border-radius:4px;box-sizing:border-box;color:#393939;font-size:13px;height:40px;line-height:40px;outline:0;padding:3px 12px;position:relative;text-align:left;width:100%}

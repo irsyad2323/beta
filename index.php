@@ -52,23 +52,53 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 	<title>SB Admin 2 - IKR <?php echo $levelad ?></title>
 	<link rel="icon" type="image/x-icon" href="img/icons/kaptennaratel.png" />
 	<link href="asset/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-	<link rel="stylesheet" href="asset/vendor/datatables/dataTables.bootstrap4.min.css">
 	<link href="asset/css/sb-admin-2.css" rel="stylesheet">
 	<link href="asset/css/custom.css" rel="stylesheet">
 	<link href="css/fix-accessibility.css" rel="stylesheet">
+	<link rel="stylesheet" href="asset/vendor/datatables/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="asset/css/bootstrap-datepicker.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
 	<link rel="stylesheet" href="asset/plugins/iCheck/all.css">
+	
+	<style>
+	/* Tab styling */
+	.tab {
+		overflow: hidden;
+		border: 1px solid #ddd;
+		background-color: #f8f9fa;
+		margin-bottom: 10px;
+	}
+	.tab button {
+		background-color: #e9ecef;
+		float: left;
+		border: none;
+		outline: none;
+		cursor: pointer;
+		padding: 12px 20px;
+		transition: 0.3s;
+		color: #495057;
+		font-weight: 500;
+		border-right: 1px solid #ddd;
+	}
+	.tab button:hover {
+		background-color: #007bff;
+		color: white;
+	}
+	.tab button.active {
+		background-color: #007bff;
+		color: white;
+	}
+	.tabcontent {
+		display: none;
+		padding: 15px;
+		border: 1px solid #ddd;
+		border-top: none;
+		background-color: white;
+	}
+	</style>
 
 </head>
 
 <body id="page-top">
-	<div class="preloader-container" id="preloaderContainer">
-		<div class="preloader"></div>
-	</div>
 
 	<!-- Page Wrapper sidebar e -->
 	<div id="wrapper">
@@ -132,7 +162,7 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 										</div>
 										<div class="form-group col-md-2" autocomplete="off">
 											<div class="dropdown">
-												<button class="btn btn-secondary dropdown-toggle" type="button" data-data-id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+												<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 													Schedule Settings
 												</button>
 												<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -525,12 +555,7 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 </div>
 
 <!-- Modals -->
-<?php include 'modal_datatable_sign.php'; ?>
-<?php include 'modal_datatable_sign_pas.php'; ?>
-<?php include 'modal_datatable_proses.php'; ?>
-<?php include 'modal_datatable_proses_pas.php'; ?>
-<?php include 'modal_datatable_solved.php'; ?>
-<?php include 'modal_slot.php'; ?>
+<div id="modal-container"></div>
 <?php include 'modal_add_ikr.php'; ?>
 <?php include 'modal_add_mntn.php'; ?>
 <?php include 'modal_add_mntnodp.php'; ?>
@@ -545,34 +570,26 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 <?php include 'modal_form_list.php'; ?>
 <?php include 'modal_slot_jdwl.php'; ?>
 
-<!-- Bootstrap core JavaScript-->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="asset/vendor/jquery/jquery.min.js"></script>
 <script src="asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Core plugin JavaScript-->
 <script src="asset/vendor/jquery-easing/jquery.easing.min.js"></script>
-<!-- Custom scripts for all pages-->
 <script src="asset/js/sb-admin-2.min.js"></script>
-<!-- Page level plugins -->
 <script src="asset/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="js/sweetalert2.all.min.js"></script>
 <script src="js/select2.min.js"></script>
-
 <script src="js/action.js"></script>
-<script defer src="js/bs-custom-file-input.js"></script>
-<script defer src="asset/js/bootstrap-datepicker.min.js"></script>
-<script defer src="asset/locales/bootstrap-datepicker.id.min.js"></script>
-<script defer src="js/datatable.js"></script>
-<script defer src="js/show_position.js"></script>
-<script defer src="js/fix-duplicate-ids.js"></script>
-<script defer src="js/final-id-fix.js"></script>
-<script defer src="js/solved-datatable.js"></script>
-<script defer src="js/proses-datatable.js"></script>
-<script defer src="js/maps-loader.js"></script>
-<!-- Bootstrap Select JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/js/bootstrap-select.min.js"></script>
+<script src="js/bs-custom-file-input.js"></script>
+<script src="asset/js/bootstrap-datepicker.min.js"></script>
+<script src="asset/locales/bootstrap-datepicker.id.min.js"></script>
+<script src="js/datatable.js"></script>
+<script src="js/show_position.js"></script>
+<script src="js/fix-duplicate-ids.js"></script>
+<script src="js/final-id-fix.js"></script>
+<script src="js/solved-datatable.js"></script>
+<script src="js/proses-datatable.js"></script>
+<script src="js/maps-loader.js"></script>
 <script src="asset/plugins/iCheck/icheck.min.js"></script>
-<script src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
 </script>
 <script>
 	// Inisialisasi DataTable dengan AJAX
@@ -598,14 +615,6 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 			}
 		});
 		
-		// Sembunyikan preloader dengan fade
-		const preloader = document.getElementById("preloaderContainer");
-		if (preloader) {
-			preloader.style.opacity = "0";
-			setTimeout(() => {
-				preloader.style.display = "none";
-			}, 300);
-		}
 	});
 </script>
 <script>
@@ -658,8 +667,7 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 		}
 	}
 </script>
-<!-- Sertakan JavaScript flatpickr -->
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- Local Flatpickr -->
 <script>
 	// Inisialisasi flatpickr dengan format 24-jam termasuk detik
 	flatpickr("#tgl_fal_res", {
@@ -802,7 +810,7 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 		defaultOpenElement.click();
 	}
 </script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<!-- Select2 loaded locally above -->
  <script>
 $(document).ready(function(){
   // Tambah select baru

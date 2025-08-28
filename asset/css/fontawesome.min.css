@@ -1,0 +1,16 @@
+/* FontAwesome Icons - Minimal */
+.fa,.fas,.far,.fal,.fab{font-family:"Font Awesome 5 Free";font-weight:900;display:inline-block}
+.fa-bars:before{content:"\f0c9"}
+.fa-sign-out-alt:before{content:"\f2f5"}
+.fa-search:before{content:"\f002"}
+.fa-angle-up:before{content:"\f106"}
+.fa-times:before{content:"\f00d"}
+.fa-handshake:before{content:"\f2b5"}
+.fa-home:before{content:"\f015"}
+.fa-map-marker:before{content:"\f041"}
+.fa-folder:before{content:"\f07b"}
+.fa-wrench:before{content:"\f0ad"}
+.fa-shopping-cart:before{content:"\f07a"}
+.fa-user-alt:before{content:"\f406"}
+.fa-file-alt:before{content:"\f15c"}
+.fa-check-circle:before{content:"\f058"}
