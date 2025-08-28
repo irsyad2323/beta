@@ -31,8 +31,8 @@ $kota = $_SESSION["level_kantor"];
             </a>
             <div id="collapseBusinessSolutions" class="collapse" aria-labelledby="headingBusinessSolutions" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/business-solutions">Lead</a>
-                    <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/business-solutions/status.php">Status</a>
+                    <a class="collapse-item" href="view/business-solutions">Lead</a>
+                    <a class="collapse-item" href="view/business-solutions/status.php">Status</a>
                 </div>
             </div>
         </li>
@@ -49,16 +49,16 @@ $kota = $_SESSION["level_kantor"];
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">MENU:</h6>
                     <?php if ($level_user != "adminwo_fulus" && $level_user != "psg_dcp" && $level_user != "ikr" && $level_user != "ts" && $level_user != "Admin") { ?>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/index.php">Home</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/index_export.php">Export</a>
+                        <a class="collapse-item" href="index.php">Home</a>
+                        <a class="collapse-item" href="index_export.php">Export</a>
                     <?php } ?>
                     <?php if ($level_user != "kapten" && $level_user != "adminwo_fulus") { ?>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/index.php">Home</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/instalasi.php">Instalasi Pararel Modem</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_kapten_disbyu_ts.php">Distribusi BYU</a>
+                        <a class="collapse-item" href="index.php">Home</a>
+                        <a class="collapse-item" href="view/instalasi.php">Instalasi Pararel Modem</a>
+                        <a class="collapse-item" href="view/view_kapten_disbyu_ts.php">Distribusi BYU</a>
                     <?php } ?>
 					<?php if ($level_user == "adminwo_fulus") { ?>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/list_mgm.php">List Sobat MGM</a>
+                        <a class="collapse-item" href="view/list_mgm.php">List Sobat MGM</a>
                     <?php } ?>
                 </div>
             </div>
@@ -74,8 +74,8 @@ $kota = $_SESSION["level_kantor"];
                 <div id="pendaftaran" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">List:</h6>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/pendaftaran_new.php">Pendaftaran</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/coverage.php">Coverage</a>
+                        <a class="collapse-item" href="view/pendaftaran_new.php">Pendaftaran</a>
+                        <a class="collapse-item" href="view/coverage.php">Coverage</a>
                     </div>
                 </div>
             <?php } ?>
@@ -92,16 +92,16 @@ $kota = $_SESSION["level_kantor"];
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">list data</h6>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/ikr_masalah_perijinan.php">Kendala Perijinan Kapten</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/ikr_masalah_pending.php">Kendala Pending Kapten</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/ikr_masalah_batal.php">Batal Pasang</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_kapten_correctiv.php">Instalasi Pararel Modem</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_kapten_disbyu.php">Distribusi Kartu Byu</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_lain_lain_admin.php">Lain Lain</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/survey.php">Survey</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/odp_edit.php">Data ODP</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/edit_ikr.php">Data IKR</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_instalasi_tiangadmin.php">Instalasi Tiang Verified</a>
+                            <a class="collapse-item" href="view/ikr_masalah_perijinan.php">Kendala Perijinan Kapten</a>
+                            <a class="collapse-item" href="view/ikr_masalah_pending.php">Kendala Pending Kapten</a>
+                            <a class="collapse-item" href="view/ikr_masalah_batal.php">Batal Pasang</a>
+                            <a class="collapse-item" href="view/view_kapten_correctiv.php">Instalasi Pararel Modem</a>
+                            <a class="collapse-item" href="view/view_kapten_disbyu.php">Distribusi Kartu Byu</a>
+                            <a class="collapse-item" href="view/view_lain_lain_admin.php">Lain Lain</a>
+                            <a class="collapse-item" href="view/survey.php">Survey</a>
+                            <a class="collapse-item" href="view/odp_edit.php">Data ODP</a>
+                            <a class="collapse-item" href="view/edit_ikr.php">Data IKR</a>
+                            <a class="collapse-item" href="view/view_instalasi_tiangadmin.php">Instalasi Tiang Verified</a>
                         </div>
                     </div>
                 </li>
@@ -118,16 +118,16 @@ $kota = $_SESSION["level_kantor"];
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">MARKETING:</h6>
                     <?php if ($level_user == "kapten") { ?>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/marketing.php">WO Marketing</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/marketing_mgm.php">Rekap MGM</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/list_mgm.php">List MGM</a>
+                        <a class="collapse-item" href="view/marketing.php">WO Marketing</a>
+                        <a class="collapse-item" href="view/marketing_mgm.php">Rekap MGM</a>
+                        <a class="collapse-item" href="view/list_mgm.php">List MGM</a>
                     <?php } ?>
                     <?php if ($level_user != "kapten" && $level_user != "adminwo_fulus") { ?>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/marketing_ts.php">WO Marketing</a>
+                        <a class="collapse-item" href="view/marketing_ts.php">WO Marketing</a>
                     <?php } ?>
                     <?php if ($level_user == "adminwo_fulus") { ?>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_marketing_keuangan.php">WO Marketing</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_marketing_mgm.php">WO MGM</a>
+                        <a class="collapse-item" href="view/view_marketing_keuangan.php">WO Marketing</a>
+                        <a class="collapse-item" href="view/view_marketing_mgm.php">WO MGM</a>
                     <?php } ?>
                 </div>
             </div>
@@ -144,19 +144,19 @@ $kota = $_SESSION["level_kantor"];
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Disable</h6>
                         <?php if ($level_user != "Admin" && $level_user != "ikr" && $level_user != "adminwo_fulus" && $level_user != "kapten") { ?>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_wo_disable_byrequest.php">Pelanggan DCP</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_wo_disable_libur.php">Libur</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_wo_disable_100day.php">Tidak Ada Kejelasan</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/dismantle.php">Dismantle Non Kapten</a>
+                            <a class="collapse-item" href="view/view_wo_disable_byrequest.php">Pelanggan DCP</a>
+                            <a class="collapse-item" href="view/view_wo_disable_libur.php">Libur</a>
+                            <a class="collapse-item" href="view/view_wo_disable_100day.php">Tidak Ada Kejelasan</a>
+                            <a class="collapse-item" href="view/dismantle.php">Dismantle Non Kapten</a>
                         <?php } ?>
                         <?php if ($level_user != "Admin" && $level_user != "psg_dcp" && $level_user != "adminwo_fulus") { ?>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_wo_disable_byrequest_admin.php">Pelanggan DCP</a>
-                            <!-- a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_modemhilang.php">Tidak Ada Kejelasan</a -->
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/dismantle.php">Dismantle Non Kapten</a>							
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_wo_disable_followupvisit.php">Followup Visit</a>
-                            <!-- a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_wo_disable_berhenti.php">DCP Modem Di Ambil</a -->
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_wo_disable_lanjut.php">Pelanggan Lanjut</a>
-                            <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_wo_disable_libur.php">Pelanggan Libur</a>
+                            <a class="collapse-item" href="view/view_wo_disable_byrequest_admin.php">Pelanggan DCP</a>
+                            <!-- a class="collapse-item" href="view/view_modemhilang.php">Tidak Ada Kejelasan</a -->
+                            <a class="collapse-item" href="view/dismantle.php">Dismantle Non Kapten</a>							
+                            <a class="collapse-item" href="view/view_wo_disable_followupvisit.php">Followup Visit</a>
+                            <!-- a class="collapse-item" href="view/view_wo_disable_berhenti.php">DCP Modem Di Ambil</a -->
+                            <a class="collapse-item" href="view/view_wo_disable_lanjut.php">Pelanggan Lanjut</a>
+                            <a class="collapse-item" href="view/view_wo_disable_libur.php">Pelanggan Libur</a>
                             <!-- a class="collapse-item" href="https://wo.naraya.co.id/beta/view/dismantle.php">Pelanggan Libur</a -->
                         <?php } ?>
                     </div>
@@ -167,15 +167,15 @@ $kota = $_SESSION["level_kantor"];
         <!-- REPORT NMC -->
         <?php if ($level_user != "Admin" && $level_user != "psg_dcp" && $level_user != "adminwo_fulus" && $level_user != "ikr") { ?>
             <li class="nav-item">
-                <a class="nav-link" href="https://wo.naraya.co.id/beta/view/view_permit_nonikr.php">
+                <a class="nav-link" href="view/view_permit_nonikr.php">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Perijinan Non IKR</span>
                 </a>
-                <a class="nav-link" href="https://wo.naraya.co.id/beta/view/report_nmc.php">
+                <a class="nav-link" href="view/report_nmc.php">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Report NMC</span>
                 </a>
-                <a class="nav-link" href="https://wo.naraya.co.id/beta/view/survey.php">
+                <a class="nav-link" href="view/survey.php">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Survey</span>
                 </a>
@@ -185,7 +185,7 @@ $kota = $_SESSION["level_kantor"];
         <!-- Lain - lain -->
         <?php if ($level_user == "ikr") { ?>
             <li class="nav-item">
-                <a class="nav-link" href="https://wo.naraya.co.id/beta/view/lain.php">
+                <a class="nav-link" href="view/lain.php">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Lain - lain</span>
                 </a>
@@ -202,8 +202,8 @@ $kota = $_SESSION["level_kantor"];
                 <div id="collapsePages" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Pembayaran IKR:</h6>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_ikr_keuangan_notverified.php">Not Verified</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_ikr_keuangan_verified.php">Verified</a>
+                        <a class="collapse-item" href="view/view_ikr_keuangan_notverified.php">Not Verified</a>
+                        <a class="collapse-item" href="view/view_ikr_keuangan_verified.php">Verified</a>
                     </div>
                 </div>
             </li>
@@ -215,8 +215,8 @@ $kota = $_SESSION["level_kantor"];
                 <div id="collapsePages2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">IKR CORRECTIV:</h6>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_ikrcorrectiv_keuangan_notverified.php">Not Verified</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_ikrcorrectiv_keuangan_verified.php">Verified</a>
+                        <a class="collapse-item" href="view/view_ikrcorrectiv_keuangan_notverified.php">Not Verified</a>
+                        <a class="collapse-item" href="view/view_ikrcorrectiv_keuangan_verified.php">Verified</a>
                     </div>
                 </div>
             </li>
@@ -231,11 +231,11 @@ $kota = $_SESSION["level_kantor"];
 
                 <div id="permit" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_permit.php">WO Permit </a>
+                        <a class="collapse-item" href="view/view_permit.php">WO Permit </a>
 
                         <h6 class="collapse-header">Partner Relationship:</h6>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_komitmen_pembayaran_permit.php">Approval</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/permit_nonikr/permit_status.php">Activities</a>
+                        <a class="collapse-item" href="view/view_komitmen_pembayaran_permit.php">Approval</a>
+                        <a class="collapse-item" href="view/permit_nonikr/permit_status.php">Activities</a>
                     </div>
                 </div>
             </li>
@@ -275,8 +275,8 @@ $kota = $_SESSION["level_kantor"];
                 <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Data MAPS</h6>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_user.php">Pelanggan</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_user_odp.php">ODP</a>
+                        <a class="collapse-item" href="view/view_user.php">Pelanggan</a>
+                        <a class="collapse-item" href="view/view_user_odp.php">ODP</a>
                     </div>
                 </div>
             </li>
@@ -293,7 +293,7 @@ $kota = $_SESSION["level_kantor"];
             <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Report Tiang</h6>
-                    <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/view_instalasi_tiang.php">Instalasi Tiang</a>
+                    <a class="collapse-item" href="view/view_instalasi_tiang.php">Instalasi Tiang</a>
                 </div>
             </div>
         </li>
@@ -309,7 +309,7 @@ $kota = $_SESSION["level_kantor"];
             <div id="collapseUtilities3" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Marketing</h6>
-                    <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/marketing_ts.php">WO Job Marketing</a>
+                    <a class="collapse-item" href="view/marketing_ts.php">WO Job Marketing</a>
                 </div>
             </div>
         </li>
@@ -319,7 +319,7 @@ $kota = $_SESSION["level_kantor"];
         <!-- Report Permit IKR -->
         <?php if ($acces_user_log != "rolies" && $acces_user_log != "vicky" && $acces_user_log != "nyoman") { ?>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="https://wo.naraya.co.id/beta/view/view_permit.php" aria-expanded="true" aria-controls="surveyor">
+                <a class="nav-link collapsed" href="view/view_permit.php" aria-expanded="true" aria-controls="surveyor">
                     <i class="fa fa-file-alt"></i>
                     <span>Report Permit IKR</span>
                 </a>
@@ -334,8 +334,8 @@ $kota = $_SESSION["level_kantor"];
 
                 <div id="collapsePartnerRelationship" class="collapse" aria-labelledby="headingPartnerRelationship" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/permit_nonikr/index.php">Partner Head</a>
-                        <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/permit_nonikr/permit_status.php">Relationship Status</a>
+                        <a class="collapse-item" href="view/permit_nonikr/index.php">Partner Head</a>
+                        <a class="collapse-item" href="view/permit_nonikr/permit_status.php">Relationship Status</a>
                     </div>
                 </div>
             </li>
@@ -369,7 +369,7 @@ $kota = $_SESSION["level_kantor"];
 
         <!-- Partner Relationship -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="https://wo.naraya.co.id/beta/view/view_komitmen_pembayaran_permit.php" aria-expanded="true" aria-controls="permit">
+            <a class="nav-link collapsed" href="view/view_komitmen_pembayaran_permit.php" aria-expanded="true" aria-controls="permit">
                 <i class="fa fa-check-circle"></i>
                 <span>Partner Relationship</span>
             </a>
@@ -387,8 +387,8 @@ $kota = $_SESSION["level_kantor"];
 
             <div id="collapsePartnerRelationship" class="collapse" aria-labelledby="headingPartnerRelationship" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/permit_nonikr/index.php">Partner Head</a>
-                    <a class="collapse-item" href="https://wo.naraya.co.id/beta/view/permit_nonikr/permit_status.php">Relationship Status</a>
+                    <a class="collapse-item" href="view/permit_nonikr/index.php">Partner Head</a>
+                    <a class="collapse-item" href="view/permit_nonikr/permit_status.php">Relationship Status</a>
                 </div>
             </div>
         </li>

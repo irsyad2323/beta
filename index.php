@@ -428,7 +428,7 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 						</select> &nbsp
 					</div>
 					<br />
-					<div id="ikr"> <?php include 'modal_form_ikr.php'; ?></div>
+					<div id="ikr"><?php include 'modal_form_ikr.php'; ?></div>
 					<div id="mntn"><?php include 'modal_mntn.php'; ?></div>
 			</div>
 			</br>
@@ -475,13 +475,9 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 					</div>
 					<br />
 
-					<div id="ikr_pas">
-						<?php include 'modal_form_ikr_pas.php'; ?>
-					</div>
+					<div id="ikr_pas"><?php include 'modal_form_ikr_pas.php'; ?></div>
 
-					<div id="mntn_pas">
-						<?php include 'modal_mntn_pas.php'; ?>
-					</div>
+					<div id="mntn_pas"><?php include 'modal_mntn_pas.php'; ?></div>
 
 			</div>
 			</br>
