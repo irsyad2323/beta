@@ -348,36 +348,65 @@ $(document).ready(function () {
       url: "controller/action_kapten_update_newversi.php",
       data: value,
       beforeSend: function () {
+        $("#loader").show();
         Swal.fire({
           title: "Processing...",
           text: "Please wait while we process your request.",
           allowOutsideClick: false,
+          showConfirmButton: false,
           didOpen: () => {
             Swal.showLoading();
           }
         });
       },
       success: function (data) {
-        Swal.close(); // Menutup loading
+        $("#loader").hide();
+        Swal.close();
 
         var a = data;
         if (a == 1) {
-          Swal.fire("Good job!", "Sukses Save Work Order", "success").then(() => {
+          Swal.fire({
+            title: "Good job!",
+            text: "Sukses Save Work Order",
+            icon: "success",
+            confirmButtonText: "OK"
+          }).then(() => {
             window.location.reload(true);
           });
         } else if (a == 101) {
-          Swal.fire("Error!", "Error Query bro!!", "error");
+          Swal.fire({
+            title: "Error!",
+            text: "Error Query bro!!",
+            icon: "error",
+            confirmButtonText: "OK"
+          });
         } else if (a == "session_expirate") {
-          Swal.fire("Session Expired!", "Session Habis!!", "error").then(() => {
+          Swal.fire({
+            title: "Session Expired!",
+            text: "Session Habis!!",
+            icon: "error",
+            confirmButtonText: "OK"
+          }).then(() => {
             window.location.href = "login.php";
           });
         } else {
-          Swal.fire("Error!", "Unknown error occurred!", "error");
+          Swal.fire({
+            title: "Error!",
+            text: "Unknown error occurred!",
+            icon: "error",
+            confirmButtonText: "OK"
+          });
         }
       },
       error: function () {
+        $("#loader").hide();
         Swal.close();
-        Swal.fire("Error!", "Failed to process the request!", "error");
+        Swal.fire({
+          title: "Error!",
+          text: "Failed to process the request!",
+          icon: "error",
+          confirmButtonText: "OK"
+        });
       }
     });
 
@@ -1485,33 +1514,34 @@ console.log("spltr_json:", spltr_json);
           if (xhr.readyState === 4) {
             Swal.hideLoading();
             if (xhr.status === 200) {
-              const response = JSON.parse(xhr.responseText);
-              if (response == 1) {
-                Swal.fire(
-                  "Good job!",
-                  "Sukses Sign Work Order",
-                  "success"
-                ).then(function (success) {
+              const response = xhr.responseText.trim();
+              if (response == "1") {
+                Swal.fire({
+                  title: "Good job!",
+                  text: "Sukses Sign Work Order",
+                  icon: "success",
+                  confirmButtonText: "OK"
+                }).then(function () {
                   window.location.reload(true);
                 });
               } else if (response == "jam1") {
-                Swal.fire("Error!", "Slot Jam 6 - 8 penuh!!", "error");
+                Swal.fire({title: "Error!", text: "Slot Jam 6 - 8 penuh!!", icon: "error", confirmButtonText: "OK"});
               } else if (response == "jam2") {
-                Swal.fire("Error!", "Slot Jam 8 - 10 penuh!!", "error");
+                Swal.fire({title: "Error!", text: "Slot Jam 8 - 10 penuh!!", icon: "error", confirmButtonText: "OK"});
               } else if (response == "jam3") {
-                Swal.fire("Error!", "Slot Jam 10 - 12 penuh!!", "error");
+                Swal.fire({title: "Error!", text: "Slot Jam 10 - 12 penuh!!", icon: "error", confirmButtonText: "OK"});
               } else if (response == "jam4") {
-                Swal.fire("Error!", "Slot Jam 13 - 15 penuh!!", "error");
+                Swal.fire({title: "Error!", text: "Slot Jam 13 - 15 penuh!!", icon: "error", confirmButtonText: "OK"});
               } else if (response == "jam5") {
-                Swal.fire("Error!", "Slot Jam 15 - 17 penuh!!", "error");
+                Swal.fire({title: "Error!", text: "Slot Jam 15 - 17 penuh!!", icon: "error", confirmButtonText: "OK"});
               } else if (response == "jam6") {
-                Swal.fire("Error!", "Slot Jam 18 - 20 penuh!!", "error");
+                Swal.fire({title: "Error!", text: "Slot Jam 18 - 20 penuh!!", icon: "error", confirmButtonText: "OK"});
               } else if (response == "Error") {
-                Swal.fire("Error!", "Error Query bro!!", "error");
+                Swal.fire({title: "Error!", text: "Error Query bro!!", icon: "error", confirmButtonText: "OK"});
               } else if (response == "Error2") {
-                Swal.fire("Error!", "Error Koneksi bro!!", "error");
+                Swal.fire({title: "Error!", text: "Error Koneksi bro!!", icon: "error", confirmButtonText: "OK"});
               } else {
-                Swal.fire("Ngek Script mu error!", response, "error");
+                Swal.fire({title: "Error!", text: response, icon: "error", confirmButtonText: "OK"});
               }
             } else {
               Swal.fire("Error!", "Failed to process the request!", "error");
@@ -1586,21 +1616,23 @@ console.log("spltr_json:", spltr_json);
           if (xhr.readyState === 4) {
             Swal.hideLoading();
             if (xhr.status === 200) {
-              try {
-                const response = JSON.parse(xhr.responseText);
-                if (response === 1) {
-                  Swal.fire(
-                    "Good job!",
-                    "Sukses Sign Work Order",
-                    "success"
-                  ).then(function () {
-                    window.location.reload(true);
-                  });
-                } else {
-                  Swal.fire("Error!", response, "error");
-                }
-              } catch (error) {
-                Swal.fire("Error!", "Invalid response from server!", "error");
+              const response = xhr.responseText.trim();
+              if (response === "1") {
+                Swal.fire({
+                  title: "Good job!",
+                  text: "Sukses Sign Work Order",
+                  icon: "success",
+                  confirmButtonText: "OK"
+                }).then(function () {
+                  window.location.reload(true);
+                });
+              } else {
+                Swal.fire({
+                  title: "Error!",
+                  text: response,
+                  icon: "error",
+                  confirmButtonText: "OK"
+                });
               }
             } else {
               Swal.fire("Error!", "Failed to process the request!", "error");
@@ -1649,9 +1681,13 @@ console.log("spltr_json:", spltr_json);
       url: "controller/action_insert_mntnodp_new.php",
       data: value,
       success: function (data) {
-        Swal.fire("Good job!", data, "success").then(function (success) {
-          window.location.reload(true);
-        });
+        if (data == 1) {
+          Swal.fire("Good job!", "Sukses Sign Work Order", "success").then(function () {
+            window.location.reload(true);
+          });
+        } else {
+          Swal.fire("Error!", data, "error");
+        }
       },
     });
   });

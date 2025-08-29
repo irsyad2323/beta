@@ -94,11 +94,78 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 		border-top: none;
 		background-color: white;
 	}
+	/* Loader */
+	#loader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		z-index: 9999;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	.loader-content {
+		text-align: center;
+		color: white;
+	}
+	.loading-bars {
+		display: flex;
+		gap: 4px;
+		margin-bottom: 20px;
+		justify-content: center;
+		align-items: center;
+	}
+	.bar {
+		width: 8px;
+		height: 60px;
+		background: white;
+		animation: loading 1.2s infinite ease-in-out;
+	}
+	.bar:nth-child(2) { animation-delay: -1.1s; }
+	.bar:nth-child(3) { animation-delay: -1.0s; }
+	.bar:nth-child(4) { animation-delay: -0.9s; }
+	.bar:nth-child(5) { animation-delay: -0.8s; }
+	.loader-text {
+		font-size: 18px;
+		font-weight: 500;
+		margin-bottom: 10px;
+		animation: pulse 1.5s ease-in-out infinite;
+	}
+	.loader-subtext {
+		font-size: 14px;
+		opacity: 0.8;
+	}
+	@keyframes loading {
+		0%, 40%, 100% { transform: scaleY(0.4); }
+		20% { transform: scaleY(1.0); }
+	}
+	@keyframes pulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.5; }
+	}
 	</style>
 
 </head>
 
 <body id="page-top">
+	<!-- Page Loader -->
+	<div id="loader">
+		<div class="loader-content">
+			<div class="loading-bars">
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+				<div class="bar"></div>
+			</div>
+			<div class="loader-text">Loading...</div>
+			<div class="loader-subtext">Mohon tunggu sebentar</div>
+		</div>
+	</div>
 
 	<!-- Page Wrapper sidebar e -->
 	<div id="wrapper">
@@ -592,6 +659,11 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 <script src="asset/plugins/iCheck/icheck.min.js"></script>
 </script>
 <script>
+	// Hide loader when page is ready
+	$(window).on('load', function() {
+		$('#loader').fadeOut();
+	});
+	
 	// Inisialisasi DataTable dengan AJAX
 	$(document).ready(function() {
 		$('#dataTable').DataTable({
@@ -614,7 +686,6 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 				"search": "Cari:"
 			}
 		});
-		
 	});
 </script>
 <script>
