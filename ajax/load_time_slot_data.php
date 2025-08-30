@@ -5,13 +5,7 @@ include('../controller/controller_mysqli.php');
 $time_slot = $_POST['time_slot'] ?? '06:00:00-07:59:59';
 $tanggal_hari_ini = $_POST['tanggal'] ?? date('Y-m-d');
 
-// Debug POST data
-echo '<div class="alert alert-warning">DEBUG POST: time_slot=' . $time_slot . ', tanggal=' . $tanggal_hari_ini . '</div>';
-
 list($start_time, $end_time) = explode('-', $time_slot);
-
-// Debug parsed time
-echo '<div class="alert alert-info">DEBUG TIME: start=' . $start_time . ', end=' . $end_time . '</div>';
 
 $query = "
 SELECT key_fal, paket_fal, tgl_fal_datetime, tgl_proses_teknis, username_fal, nama_fal, jenis_wo, tlp_fal, kd_layanan, pic_ikr, status_wo, foto_dpn_rmh, foto_ktp, lokasi, alamat_fal, kelurahan, perlakuan, total_diskon, angsuran1, password_fal, lain_lain
@@ -72,16 +66,11 @@ ORDER BY tgl_fal_datetime DESC";
 
 $table = mysqli_query($koneksi, $query);
 
-// Debug info
 if (!$table) {
-    echo '<div class="alert alert-danger">Query Error: ' . mysqli_error($koneksi) . '</div>';
+    echo '<div class="alert alert-danger">Query Error</div>';
     exit;
 }
-
-$row_count = mysqli_num_rows($table);
 ?>
-
-<div class="alert alert-info">Time Slot: <?= $time_slot ?>, Tanggal: <?= $tanggal_hari_ini ?>, Total: <?= $row_count ?> records</div>
 
 <div class="table-responsive">
     <table class="table table-bordered" width="100%" cellspacing="0">
@@ -121,18 +110,11 @@ $row_count = mysqli_num_rows($table);
                 <td><?= $row['tlp_fal'] ?></td>
                 <td><small class="badge <?= $unit_badge ?></small></td>
                 <td>
-                    <div class="dropdown">
-								  <button class="btn btn-info dropdown-toggle" type="button" data-id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									ACTION
-								  </button>
-								  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a name="edit" data-id="<?php echo $row['username_fal'];?>"
-									username_fal="<?php echo $row['username_fal'];?>"
-									jenis_wo="<?php echo $row['jenis_wo'];?>"
-									key_fal="<?php echo $row['key_fal'];?>"
-									class="dropdown-item editproses" >Ambil</a>
-								  </div>
-								</div>
+                    <a class="btn btn-sm btn-primary editproses" 
+                       data-id="<?= $row['username_fal'] ?>"
+                       username_fal="<?= $row['username_fal'] ?>"
+                       jenis_wo="<?= $row['jenis_wo'] ?>"
+                       key_fal="<?= $row['key_fal'] ?>">Ambil</a>
                 </td>
             </tr>
             <?php 

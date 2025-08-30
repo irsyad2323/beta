@@ -650,20 +650,20 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 
 <script src="asset/vendor/jquery/jquery.min.js"></script>
 <script src="asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="asset/vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="asset/js/sb-admin-2.min.js"></script>
-<script src="asset/vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script defer src="asset/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script defer src="asset/js/sb-admin-2.min.js"></script>
+<script defer src="asset/vendor/datatables/jquery.dataTables.min.js"></script>
+<script defer src="asset/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="js/sweetalert2.all.min.js"></script>
-<script src="js/select2.min.js"></script>
+<script defer src="js/select2.min.js"></script>
 <script src="js/action.js"></script>
-<script src="js/bs-custom-file-input.js"></script>
-<script src="asset/js/bootstrap-datepicker.min.js"></script>
-<script src="asset/locales/bootstrap-datepicker.id.min.js"></script>
-<script src="js/datatable.js"></script>
-<script src="js/show_position.js"></script>
-<script src="js/fix-duplicate-ids.js"></script>
-<script src="js/final-id-fix.js"></script>
+<script defer src="js/bs-custom-file-input.js"></script>
+<script defer src="asset/js/bootstrap-datepicker.min.js"></script>
+<script defer src="asset/locales/bootstrap-datepicker.id.min.js"></script>
+<script defer src="js/datatable.js"></script>
+<script defer src="js/show_position.js"></script>
+<script defer src="js/fix-duplicate-ids.js"></script>
+<script defer src="js/final-id-fix.js"></script>
 
 <?php include 'modal_datatable_slot.php'; ?>
 <?php include 'modal_datatable_sign.php'; ?>
@@ -671,12 +671,11 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 <?php include 'modal_datatable_proses.php'; ?>
 <?php include 'modal_datatable_proses_pas_unified.php'; ?>
 <?php include 'modal_datatable_solved.php'; ?>
-
 <?php include 'modal_form_list.php'; ?>
-<script src="js/maps-loader.js"></script>
-<script src="asset/plugins/iCheck/icheck.min.js"></script>
+<script defer src="js/maps-loader.js"></script>
+<script defer src="asset/plugins/iCheck/icheck.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="js/button-fix.js"></script>
+<script defer src="js/button-fix.js"></script>
 <script>
 	// Hide loader when page is ready
 	$(window).on('load', function() {
@@ -814,27 +813,22 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 	});
 </script>
 
-e.input.removeAttribute("readonly");
-		}
-	});
-</script>
-
 <script>
 	// Set up global variable
 
 	var result;
-	showPosition();
-
+	
 	function showPosition() {
-
 		// Store the element where the page displays the result
-
 		lokasi_kapten_bckbn = document.getElementById("lokasi_kapten_mntn_bckbn");
-		//lokasi_dst = document.getElementById("lokasi_kapten_ins_dis");
-		//okasi_kapten_ins_odp = document.getElementById("lokasi_kapten_ins_odp");
 		lokasi_ins = document.getElementById("lokasi_ins");
 		lokasi_kapten_mt = document.getElementById("lokasi_kapten_mt");
 		lokasi_odp = document.getElementById("lokasi_kapten_mntn_odp");
+		
+		// Check if elements exist before proceeding
+		if (!lokasi_kapten_bckbn && !lokasi_ins && !lokasi_kapten_mt && !lokasi_odp) {
+			return; // Exit if no location elements found
+		}
 
 
 		// If geolocation is available, try to get the visitor's position
@@ -853,14 +847,13 @@ e.input.removeAttribute("readonly");
 
 
 
-	// Define callback function for   attempt
+	// Define callback function for successful attempt
 	function successCallback(position) {
-		lokasi_kapten_bckbn.value = position.coords.latitude + "#" + position.coords.longitude;
-		//lokasi_kapten_ins_odp.value = position.coords.latitude + "#" + position.coords.longitude;
-		lokasi_ins.value = position.coords.latitude + "#" + position.coords.longitude;
-		//lokasi_dst.value = position.coords.latitude + "#" + position.coords.longitude;
-		lokasi_kapten_mt.value = position.coords.latitude + "#" + position.coords.longitude;
-		lokasi_odp.value = position.coords.latitude + "#" + position.coords.longitude;
+		var coords = position.coords.latitude + "#" + position.coords.longitude;
+		if (lokasi_kapten_bckbn) lokasi_kapten_bckbn.value = coords;
+		if (lokasi_ins) lokasi_ins.value = coords;
+		if (lokasi_kapten_mt) lokasi_kapten_mt.value = coords;
+		if (lokasi_odp) lokasi_odp.value = coords;
 	}
 
 	// Define callback function for failed attempt
