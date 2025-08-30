@@ -160,9 +160,7 @@ GROUP BY status_wo;
 				$box_color = 'kuning';
 			}
 
-			$click_action = ($is_current_slot && $box_color == 'kuning') ? "" : "tes='{$status_wo_pekerjaan[$baris_no]['hari']}'
-				start2='{$status_wo_pekerjaan[$baris_no]['start']}'
-				end='{$status_wo_pekerjaan[$baris_no]['end']}')'";
+			$click_action = ($is_current_slot && $box_color == 'kuning') ? "" : "tes='{$status_wo_pekerjaan[$baris_no]['hari']}' start2='{$status_wo_pekerjaan[$baris_no]['start']}' end='{$status_wo_pekerjaan[$baris_no]['end']}'";
 			if ($box_color == 'kuning') {
 				if ($dt > $start_datetime) {
 					$class = "kotak $box_color inactive";
@@ -325,45 +323,46 @@ GROUP BY status_wo;
 				$box_color = 'hijau';
 			}
 
-			$click_action = ($is_current_slot && $box_color == 'hijau') ? "" : "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}'
-				start='{$status_wo_pekerjaan[$baris_no]['start']}'
-				end='{$status_wo_pekerjaan[$baris_no]['end']}')'";
-
 			if ($leveladmin == 'cs') {
 				if ($box_color == 'hijau') {
-					//$date_start_datetime = date_modify($start_datetime, "-1 hour");
 					if ($start_datetime < $dt) {
 						$class = "kotak $box_color inactive";
+						$click_action = "";
 					} else {
 						$class = "kotak $box_color add";
+						$click_action = "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}' start='{$status_wo_pekerjaan[$baris_no]['start']}' end='{$status_wo_pekerjaan[$baris_no]['end']}'";
 					}
 				} elseif ($box_color == 'kuning') {
 					$class = "kotak $box_color list_sign";
+					$click_action = "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}' start='{$status_wo_pekerjaan[$baris_no]['start']}' end='{$status_wo_pekerjaan[$baris_no]['end']}'";
 				} elseif ($box_color == 'merah') {
 					$class = "kotak $box_color list_pros";
+					$click_action = "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}' start='{$status_wo_pekerjaan[$baris_no]['start']}' end='{$status_wo_pekerjaan[$baris_no]['end']}'";
 				} elseif ($box_color == 'biru') {
 					$class = "kotak $box_color list_solved";
+					$click_action = "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}' start='{$status_wo_pekerjaan[$baris_no]['start']}' end='{$status_wo_pekerjaan[$baris_no]['end']}'";
 				} elseif ($box_color == 'abu') {
 					$class = "kotak $box_color list";
+					$click_action = "";
 				}
 			} elseif ($leveladmin == 'admin_ts') {
 				if ($box_color == 'hijau') {
-					if ($start_datetime < $dte) {
-						$class = "kotak $box_color add";
-					} else {
-						$class = "kotak $box_color add";
-					}
+					$class = "kotak $box_color add";
+					$click_action = "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}' start='{$status_wo_pekerjaan[$baris_no]['start']}' end='{$status_wo_pekerjaan[$baris_no]['end']}'";
 				} elseif ($box_color == 'kuning') {
 					$class = "kotak $box_color list_sign";
+					$click_action = "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}' start='{$status_wo_pekerjaan[$baris_no]['start']}' end='{$status_wo_pekerjaan[$baris_no]['end']}'";
 				} elseif ($box_color == 'merah') {
 					$class = "kotak $box_color list_pros";
+					$click_action = "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}' start='{$status_wo_pekerjaan[$baris_no]['start']}' end='{$status_wo_pekerjaan[$baris_no]['end']}'";
 				} elseif ($box_color == 'biru') {
 					$class = "kotak $box_color list_solved";
+					$click_action = "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}' start='{$status_wo_pekerjaan[$baris_no]['start']}' end='{$status_wo_pekerjaan[$baris_no]['end']}'";
 				} elseif ($box_color == 'abu') {
 					$class = "kotak $box_color list";
+					$click_action = "";
 				}
 			}
-
 
 			echo "<div class='btn btn-info btn-sm mr-2 $class' $click_action><i class='fas fa-user'></i>$box_label</div>";
 		}
@@ -476,9 +475,7 @@ $result_kotak = $koneksi->query($sql_kotak);
 				$box_color = 'hijau';
 			}
 
-			$click_action = ($is_current_slot && $box_color == 'hijau') ? "" : "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}'
-				start='{$status_wo_pekerjaan[$baris_no]['start']}'
-				end='{$status_wo_pekerjaan[$baris_no]['end']}')'";
+			$click_action = "tanggal='{$status_wo_pekerjaan[$baris_no]['hari']}' start='{$status_wo_pekerjaan[$baris_no]['start']}' end='{$status_wo_pekerjaan[$baris_no]['end']}'";
 
 			if ($leveladmin == 'cs') {
 				if ($box_color == 'hijau') {

@@ -25,7 +25,7 @@
 
                         <div class="form-row">
                             <label for="rang">ODP Induk &nbsp&nbsp&nbsp&nbsp</label>
-                            <select class="selectpicker" id="odp_induk_dis" name="odp_induk_dis[]" data-live-search="true" data-width="350px">
+                            <select class="selectpicker" id="odp_induk_dis" name="odp_induk_dis" data-live-search="true" data-width="350px">
                                 <?php
                                 include('controller/controller_mysqli.php');
                                 $sql_user = mysqli_query($koneksi, "SELECT * FROM tbl_odp");
@@ -80,23 +80,24 @@
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const selectOdp = document.getElementById('odp_induk_dis');
-        const inputKdLayanan = document.getElementById('kd_layanan2');
-
-        selectOdp.addEventListener('change', function() {
-            const selectedText = selectOdp.options[selectOdp.selectedIndex].text;
-
-            const separator = selectedText.lastIndexOf('-');
-            if (separator !== -1) {
-                const kdLayanan = selectedText.substring(separator + 1).trim();
-                inputKdLayanan.value = kdLayanan;
-            } else {
-                inputKdLayanan.value = '';
-            }
+    $(document).ready(function() {
+        // Inisialisasi Bootstrap Select
+        $('#odp_induk_dis').selectpicker({
+            liveSearch: true,
+            size: 10
         });
 
-        // Trigger change awal jika ada default value
-        selectOdp.dispatchEvent(new Event('change'));
+        // Event handler untuk perubahan select
+        $('#odp_induk_dis').on('changed.bs.select', function() {
+            const selectedText = $(this).find('option:selected').text();
+            const separator = selectedText.lastIndexOf('-');
+            
+            if (separator !== -1) {
+                const kdLayanan = selectedText.substring(separator + 1).trim();
+                $('#kd_layanan2').val(kdLayanan);
+            } else {
+                $('#kd_layanan2').val('');
+            }
+        });
     });
 </script>

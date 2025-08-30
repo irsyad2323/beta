@@ -228,7 +228,19 @@ $(document).ready(function () {
       async: false,
       url: "controller/action_edit_maintenanceodp_new.php",
       data: value,
+      beforeSend: function () {
+        Swal.fire({
+          title: "Processing...",
+          text: "Please wait while we process your request.",
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        });
+      },
       success: function (data) {
+        Swal.close();
         alert(data);
         window.location.reload(true);
       },
@@ -489,7 +501,19 @@ $(document).ready(function () {
       async: false,
       url: "controller/action_edit_maintenance_new.php",
       data: value,
+      beforeSend: function () {
+        Swal.fire({
+          title: "Processing...",
+          text: "Please wait while we process your request.",
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        });
+      },
       success: function (data) {
+        Swal.close();
         //alert(data);
         var a = data;
         if (a == 1) {
@@ -697,7 +721,19 @@ console.log("spltr_json:", spltr_json);
         type: "POST",
         url: "controller/action_edit_insodp_new.php",
         data: value,
+        beforeSend: function () {
+          Swal.fire({
+            title: "Processing...",
+            text: "Please wait while we process your request.",
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            didOpen: () => {
+              Swal.showLoading();
+            }
+          });
+        },
         success: function (data) {
+          Swal.close();
           if (data == 1) {
             Swal.fire("Good job!", "Sukses Save Work Order", "success").then(
               function () {
@@ -778,7 +814,19 @@ console.log("spltr_json:", spltr_json);
       async: false,
       url: "controller/action_edit_mntnbckbn_new.php",
       data: value,
+      beforeSend: function () {
+        Swal.fire({
+          title: "Processing...",
+          text: "Please wait while we process your request.",
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        });
+      },
       success: function (data) {
+        Swal.close();
         //alert(data);
         var a = data;
         if (a == 1) {
@@ -903,7 +951,19 @@ console.log("spltr_json:", spltr_json);
       async: false,
       url: "controller/action_edit_insdis_new.php",
       data: value,
+      beforeSend: function () {
+        Swal.fire({
+          title: "Processing...",
+          text: "Please wait while we process your request.",
+          allowOutsideClick: false,
+          showConfirmButton: false,
+          didOpen: () => {
+            Swal.showLoading();
+          }
+        });
+      },
       success: function (data) {
+        Swal.close();
         var a = data;
         if (a == 1) {
           Swal.fire("Good job!", "Sukses Save Work Order", "success").then(
@@ -1066,22 +1126,21 @@ console.log("spltr_json:", spltr_json);
     var date_wo = $(this).attr("tes");
     var start = $(this).attr("start2");
     var end = $(this).attr("end");
-    //alert (start);
-    $("#date_wo_ts").val(date_wo);
-    $("#start").val(start);
-    if (start == "06:00:00") {
-      $("#modal_1").modal("show");
-    } else if (start == "08:00:00") {
-      $("#modal_2").modal("show");
-    } else if (start == "10:00:00") {
-      $("#modal_3").modal("show");
-    } else if (start == "13:00:00") {
-      $("#modal_4").modal("show");
-    } else if (start == "15:00:00") {
-      $("#modal_5").modal("show");
-    } else if (start == "18:00:00") {
-      $("#modal_6").modal("show");
-    }
+
+    $("#modal_slot_unified").modal("show");
+
+    // Gunakan .find() dalam modal
+    var modal = $("#modal_slot_unified");
+
+    modal.find(".date_wo").val(date_wo);
+    modal.find(".start").val(start);
+    modal.find(".end").val(end);
+    
+    console.log('VALUES SET:', {
+      date_wo_val: modal.find(".date_wo").val(),
+      start_val: modal.find(".start").val(),
+      end_val: modal.find(".end").val()
+    });
   });
 
   $(document).on("click", ".list_sign", function () {
@@ -1108,36 +1167,36 @@ console.log("spltr_json:", spltr_json);
   });
 
   $(document).on("click", ".list_signp", function () {
-    //alert ('tes'); return;
     var date_wo = $(this).attr("tanggal");
     var start = $(this).attr("start");
     var end = $(this).attr("end");
-    //alert (start);
+    
+    console.log('Clicked signp:', {date_wo, start, end});
+    
     $("#date_wo_ts").val(date_wo);
     $("#start").val(start);
-    if (start == "06:00:00") {
-      $("#modal_signp1").modal("show");
-    } else if (start == "08:00:00") {
-      $("#modal_signp2").modal("show");
-    } else if (start == "10:00:00") {
-      $("#modal_signp3").modal("show");
-    } else if (start == "13:00:00") {
-      $("#modal_signp4").modal("show");
-    } else if (start == "15:00:00") {
-      $("#modal_signp5").modal("show");
-    } else if (start == "18:00:00") {
-      $("#modal_signp6").modal("show");
-    }
+    
+    // Tampilkan modal unified
+    $("#modal_sign_pas_unified").modal("show");
+    
+    // Set slot waktu dan load data setelah modal terbuka
+    $("#modal_sign_pas_unified").on('shown.bs.modal', function() {
+      var timeSlot = start + "-" + end;
+      console.log('Setting timeSlot:', timeSlot);
+      $("#sign_pas_time_slot_filter").val(timeSlot);
+      loadSignPasTimeSlotData(timeSlot, date_wo);
+      $(this).off('shown.bs.modal'); // Remove event after use
+    });
   });
 
   $(document).on("click", ".list_pros", function () {
-    //alert ('tes'); return;
     var date_wo = $(this).attr("tanggal");
     var start = $(this).attr("start");
     var end = $(this).attr("end");
-    //alert (start);
+    
     $("#date_wo_ts").val(date_wo);
     $("#start").val(start);
+    
     if (start == "06:00:00") {
       $("#modal_pros1").modal("show");
     } else if (start == "08:00:00") {
@@ -1154,26 +1213,26 @@ console.log("spltr_json:", spltr_json);
   });
 
   $(document).on("click", ".list_pros_pas", function () {
-    //alert ('tes'); return;
     var date_wo = $(this).attr("tanggal");
     var start = $(this).attr("start");
     var end = $(this).attr("end");
-    //alert (start);
+    
+    console.log('Clicked pros_pas:', {date_wo, start, end});
+    
     $("#date_wo_ts").val(date_wo);
     $("#start").val(start);
-    if (start == "06:00:00") {
-      $("#modal_prosp1").modal("show");
-    } else if (start == "08:00:00") {
-      $("#modal_prosp2").modal("show");
-    } else if (start == "10:00:00") {
-      $("#modal_prosp3").modal("show");
-    } else if (start == "13:00:00") {
-      $("#modal_prosp4").modal("show");
-    } else if (start == "15:00:00") {
-      $("#modal_prosp5").modal("show");
-    } else if (start == "18:00:00") {
-      $("#modal_prosp6").modal("show");
-    }
+    
+    // Tampilkan modal unified
+    $("#modal_proses_pas_unified").modal("show");
+    
+    // Set slot waktu dan load data setelah modal terbuka
+    $("#modal_proses_pas_unified").on('shown.bs.modal', function() {
+      var timeSlot = start + "-" + end;
+      console.log('Setting timeSlot:', timeSlot);
+      $("#proses_pas_time_slot_filter").val(timeSlot);
+      loadProsesPasTimeSlotData(timeSlot, date_wo);
+      $(this).off('shown.bs.modal'); // Remove event after use
+    });
   });
 
   $(document).on("click", ".list_solved", function () {

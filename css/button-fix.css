@@ -1,0 +1,113 @@
+/* CSS untuk memperbaiki masalah tombol yang tidak responsif */
+
+.kotak {
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 1;
+}
+
+.kotak.inactive {
+    cursor: not-allowed !important;
+    opacity: 0.6;
+}
+
+.kotak:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.kotak:active {
+    transform: scale(0.95);
+}
+
+/* Pastikan tombol dapat diklik */
+.btn.kotak {
+    display: inline-block !important;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Warna tombol berdasarkan status */
+.kotak.hijau {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+    color: #fff !important;
+}
+
+.kotak.kuning {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.kotak.merah {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+.kotak.biru {
+    background-color: #007bff !important;
+    border-color: #007bff !important;
+    color: #fff !important;
+}
+
+.kotak.abu {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: #fff !important;
+}
+
+/* Hover effects */
+.kotak.hijau:hover {
+    background-color: #218838 !important;
+    border-color: #1e7e34 !important;
+}
+
+.kotak.kuning:hover {
+    background-color: #e0a800 !important;
+    border-color: #d39e00 !important;
+}
+
+.kotak.merah:hover {
+    background-color: #c82333 !important;
+    border-color: #bd2130 !important;
+}
+
+.kotak.biru:hover {
+    background-color: #0069d9 !important;
+    border-color: #0062cc !important;
+}
+
+.kotak.abu:hover {
+    background-color: #5a6268 !important;
+    border-color: #545b62 !important;
+}
+
+/* Container styling */
+.kotak-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.baris {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.waktu {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #495057;
+}

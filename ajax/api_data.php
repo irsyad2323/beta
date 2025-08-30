@@ -8,7 +8,7 @@ if (!isset($_SESSION["logingundala"])) {
 }
 
 try {
-    include('controller/controller_mysqli.php');
+    include('../controller/controller_mysqli.php');
     
     $start = isset($_POST['start']) ? intval($_POST['start']) : 0;
     $length = isset($_POST['length']) ? intval($_POST['length']) : 10;

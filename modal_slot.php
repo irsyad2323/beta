@@ -678,7 +678,7 @@
 								b.nama_fal, b.jenis_wo, b.tlp_fal, b.kd_layanan, b.pic_ikr , b.status_wo, 0 as foto_dpn_rmh, 0 as foto_ktp, 0 as lokasi, b.alamat_fal, b.kelurahan, 0 as perlakuan, 
 								0 as total_diskon, 0 as angsuran1, 0 as password_fal , b.lain_lain 
 								FROM tbl_maintenance b 
-								WHERE b.kd_layanan in ('pas','pas1') and  b.status_wo in ('Belum Terpasang') AND TIME(b.tgl_date_time) 
+								WHERE b.kd_layanan in ('pas','pas1') and  b.status_wo in ('Proses Pengerjaan') AND TIME(b.tgl_date_time) 
 								BETWEEN '10:00:00' and '12:59:59' and DATE(b.tgl_date_time) = DATE(NOW())
 
 								union all
@@ -687,7 +687,7 @@
 								0 as tlp_fal, c.kd_layanan, c.pic_ikr, c.status_wo, 0 as foto_dpn_rmh , 0 as foto_ktp, 0 as lokasi, c.alamat_fal, c.kelurahan, 0 as perlakuan, 0 as total_diskon, 
 								0 as angsuran1 , 0 as password_fal, c.lain_lain 
 								FROM tbl_maintenance_odp c 
-								WHERE c.kd_layanan in ('pas','pas1') and  c.status_wo in ('Belum Terpasang') AND TIME(c.tgl_sign) 
+								WHERE c.kd_layanan in ('pas','pas1') and  c.status_wo in ('Proses Pengerjaan') AND TIME(c.tgl_sign) 
 								BETWEEN '10:00:00' and '12:59:59' and DATE(c.tgl_sign) = DATE(NOW())
 
 								) AS combined_logs ORDER BY tgl_fal_datetime DESC");

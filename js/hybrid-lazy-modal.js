@@ -1,11 +1,11 @@
 // Hybrid Lazy Modal Loading - Load specific modals only when needed
 const modalMap = {
-    'modal_sign1': 'modal_datatable_sign.php',
-    'modal_sign2': 'modal_datatable_sign.php',
-    'modal_sign3': 'modal_datatable_sign.php',
-    'modal_sign4': 'modal_datatable_sign.php',
-    'modal_sign5': 'modal_datatable_sign.php',
-    'modal_sign6': 'modal_datatable_sign.php',
+    'modal_sign1': 'modal_datatable_sign_unified.php',
+    'modal_sign2': 'modal_datatable_sign_unified.php',
+    'modal_sign3': 'modal_datatable_sign_unified.php',
+    'modal_sign4': 'modal_datatable_sign_unified.php',
+    'modal_sign5': 'modal_datatable_sign_unified.php',
+    'modal_sign6': 'modal_datatable_sign_unified.php',
     'modal_signp1': 'modal_datatable_sign_pas.php',
     'modal_signp2': 'modal_datatable_sign_pas.php',
     'modal_signp3': 'modal_datatable_sign_pas.php',

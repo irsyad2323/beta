@@ -49,15 +49,18 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 	<meta name="description" content="">
 	<meta name="author" content="">
 	<link href="css/select2.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.14.0-beta3/dist/css/bootstrap-select.min.css">
 	<title>SB Admin 2 - IKR <?php echo $levelad ?></title>
 	<link rel="icon" type="image/x-icon" href="img/icons/kaptennaratel.png" />
 	<link href="asset/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 	<link href="asset/css/sb-admin-2.css" rel="stylesheet">
 	<link href="asset/css/custom.css" rel="stylesheet">
 	<link href="css/fix-accessibility.css" rel="stylesheet">
+	<link href="css/button-fix.css" rel="stylesheet">
 	<link rel="stylesheet" href="asset/vendor/datatables/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="asset/css/bootstrap-datepicker.min.css">
 	<link rel="stylesheet" href="asset/plugins/iCheck/all.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 	
 	<style>
 	/* Tab styling */
@@ -146,6 +149,20 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 	@keyframes pulse {
 		0%, 100% { opacity: 1; }
 		50% { opacity: 0.5; }
+	}
+	/* Modal z-index fix */
+	.modal-priority {
+		z-index: 1070 !important;
+	}
+	.modal-priority .modal-backdrop {
+		z-index: 1069 !important;
+	}
+	/* Fix for nested modals */
+	.modal.show ~ .modal {
+		z-index: 1080 !important;
+	}
+	.modal.show ~ .modal .modal-backdrop {
+		z-index: 1079 !important;
 	}
 	</style>
 
@@ -621,21 +638,15 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 	</form>
 </div>
 
-<!-- Modals -->
-<div id="modal-container"></div>
+<!-- Essential Modals Only -->
 <?php include 'modal_add_ikr.php'; ?>
 <?php include 'modal_add_mntn.php'; ?>
 <?php include 'modal_add_mntnodp.php'; ?>
+<?php include 'modal_solved_ikr.php'; ?>
 <?php include 'modal_add_dis.php'; ?>
 <?php include 'modal_add_cor.php'; ?>
-<?php include 'modal_solved_ikr.php'; ?>
-<?php include 'modal_solved.php'; ?>
-<?php include 'modal_solved_mntn.php'; ?>
-<?php include 'modal_solved_ins_odp.php'; ?>
-<?php include 'modal_solved_ins_distribusi.php'; ?>
-<?php include 'modal_solved_ins_backbone.php'; ?>
-<?php include 'modal_form_list.php'; ?>
-<?php include 'modal_slot_jdwl.php'; ?>
+<!-- Dynamic modal container -->
+<div id="dynamic-modal-container"></div>
 
 <script src="asset/vendor/jquery/jquery.min.js"></script>
 <script src="asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -653,11 +664,19 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 <script src="js/show_position.js"></script>
 <script src="js/fix-duplicate-ids.js"></script>
 <script src="js/final-id-fix.js"></script>
-<script src="js/solved-datatable.js"></script>
-<script src="js/proses-datatable.js"></script>
+
+<?php include 'modal_datatable_slot.php'; ?>
+<?php include 'modal_datatable_sign.php'; ?>
+<?php include 'modal_datatable_sign_pas_unified.php'; ?>
+<?php include 'modal_datatable_proses.php'; ?>
+<?php include 'modal_datatable_proses_pas_unified.php'; ?>
+<?php include 'modal_datatable_solved.php'; ?>
+
+<?php include 'modal_form_list.php'; ?>
 <script src="js/maps-loader.js"></script>
 <script src="asset/plugins/iCheck/icheck.min.js"></script>
-</script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="js/button-fix.js"></script>
 <script>
 	// Hide loader when page is ready
 	$(window).on('load', function() {
@@ -670,7 +689,7 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 			"processing": true,
 			"serverSide": true,
 			"ajax": {
-				"url": "api_data.php",
+				"url": "ajax/api_data.php",
 				"type": "POST"
 			},
 			"columns": [
@@ -791,6 +810,11 @@ if ($level_user == 'kapten' or $level_user == 'vendor_marketing' or $level_user 
 		enableSeconds: true,
 		onReady: function(selectedDates, dateStr, instance) {
 			instance.input.removeAttribute("readonly");
+		}
+	});
+</script>
+
+e.input.removeAttribute("readonly");
 		}
 	});
 </script>
